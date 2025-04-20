@@ -16,13 +16,6 @@ public class EditorialServicio {
     @Autowired
     private EditorialRespositorio editorialRespositorio;
 
-//    @Transactional
-//    public Editorial guardarEditorial(String nombreEditorial){
-//        Editorial editorial = new Editorial();
-//        editorial.setNombreEditorial(nombreEditorial);
-//        editorial.setEditorialActiva(true);
-//        return editorialRespositorio.save(editorial);
-//    }
 
     @Transactional
     public void guardarEditorial(EditorialCreateDTO editorialDTO){

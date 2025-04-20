@@ -1,6 +1,7 @@
 package com.egg.libreriaapi.servicios;
 
 import com.egg.libreriaapi.entidades.Autor;
+import com.egg.libreriaapi.modelos.AutorCreateDTO;
 import com.egg.libreriaapi.modelos.AutorModificarEstadoDTO;
 import com.egg.libreriaapi.repositorios.AutorRepositorio;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,11 +18,11 @@ public class AutorServicio {
     private AutorRepositorio autorRepositorio;
 
     @Transactional
-    public Autor guardarAutor(String nombre){
+    public void guardarAutor(AutorCreateDTO autorDTO){
         Autor autor = new Autor();
-        autor.setNombreAutor(nombre);
+        autor.setNombreAutor(autorDTO.getNombreAutor());
         autor.setAutorActivo(true);
-        return autorRepositorio.save(autor);
+        autorRepositorio.save(autor);
     }
 
     public List<Autor> listarAutores() {

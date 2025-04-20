@@ -17,17 +17,6 @@ public class EditorialControlador {
     @Autowired
     private EditorialServicio editorialServicio;
 
-//    @PostMapping()
-//    public ResponseEntity<Editorial> crearEditorial(@RequestBody Map<String,Object> body) {
-//        try{
-//            String nombreEditorial = (String) body.get("nombreEditorial");
-//            Editorial editorial = editorialServicio.guardarEditorial(nombreEditorial);
-//            return ResponseEntity.status(HttpStatus.CREATED).body(editorial);
-//        }catch(Exception e){
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-
     @PostMapping()
     public ResponseEntity<EditorialCreateDTO> crearEditorial(@RequestBody EditorialCreateDTO editorialDTO) {
         try{

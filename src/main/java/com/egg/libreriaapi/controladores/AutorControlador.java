@@ -1,6 +1,7 @@
 package com.egg.libreriaapi.controladores;
 
 import com.egg.libreriaapi.entidades.Autor;
+import com.egg.libreriaapi.modelos.AutorCreateDTO;
 import com.egg.libreriaapi.modelos.AutorModificarEstadoDTO;
 import com.egg.libreriaapi.servicios.AutorServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/autor")
@@ -18,11 +18,10 @@ public class AutorControlador {
     private AutorServicio autorServicio;
 
     @PostMapping()
-    public ResponseEntity<Autor> crearAutor(@RequestBody Map<String,Object> body){
+    public ResponseEntity<Object> crearAutor(@RequestBody AutorCreateDTO autorDTO){
         try{
-            String nombreAutor = (String) body.get("nombreAutor");
-            Autor autor = autorServicio.guardarAutor(nombreAutor);
-            return ResponseEntity.status(HttpStatus.CREATED).body(autor);
+            autorServicio.guardarAutor(autorDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(autorDTO);
 
         }catch(Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
